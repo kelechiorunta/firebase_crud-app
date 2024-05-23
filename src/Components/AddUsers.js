@@ -22,19 +22,16 @@ const AddUsers = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    
-    //userArray.push({name: formData.name, age: formData.age, city: formData.city})
-    userArray = [...userArray, users]
-    // users.forEach((user, index) => {
-    //   userArray.push({
-    //     name: formData.get(`name${index}`),
-    //     age: formData.get(`age${index}`),
-    //     city: formData.get(`city${index}`)
-    //   });
-    // });
+    const formData = new FormData(e.target); 
 
     try {
+      const queryUser = await getDoc(doc(db, 'users-collection', 'gCyQ0bDFtBCbKJ05wqYd'))//(
+       if (queryUser.data().userArray) {
+            console.log(queryUser.data().userArray)
+            userArray = [...queryUser.data().userArray, users]
+       }else{
+            userArray = [...userArray, users]
+       }
       await setDoc(doc(db, 'users-collection', 'gCyQ0bDFtBCbKJ05wqYd'), {userArray});
       console.log('Users added successfully');
       setUsers({ name: '', age: '', city: '' }); // Reset form after successful submission
