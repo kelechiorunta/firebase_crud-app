@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React from 'react';
+import AddData from './Components/AddData'
+import SetData from './Components/SetData';
+import GetData from './Components/GetData';
+import GetSingleData from './Components/GetSingleData';
+import AddUsers from './Components/AddUsers';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='appfont'>
+      <h1>Firestore CRUD Operations</h1>
+      <AddData />
+      <SetData />
+      <GetData />
+      <GetSingleData />
+      <h1>Firestore User Form</h1>
+      <AddUsers />
     </div>
   );
-}
+};
 
 export default App;
