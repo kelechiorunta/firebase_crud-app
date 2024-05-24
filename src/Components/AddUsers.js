@@ -40,67 +40,66 @@ const AddUsers = () => {
     }
   };
 
-//   useEffect(() => {
     const fetchUsers = async () => {
       const querySnapshot = await getDoc(doc(db, 'users-collection', 'gCyQ0bDFtBCbKJ05wqYd'))//(collection(db, 'users-collection'));
-      
-    //   setData(querySnapshot.docs.map(doc => doc.data()));
       setData(querySnapshot.data().userArray);
     };
 
-    // fetchData();
-//   }, []);
-
   return (
-    <div>
-    <form onSubmit={handleSubmit}>
+    <div className='border shadow-lg mx-auto w-max p-8'>
+    <form 
+    className='border shadow-lg mx-auto w-180 p-8'
+    onSubmit={handleSubmit}>
       {/* {users.map((user, index) => ( */}
         <div>
           <input
+            className="p-2 rounded bg-slate-700 text-white m-2 border"
             type="text"
             name="name"//{`name${index}`}
-            placeholder="Name"
+            placeholder="Enter Name"
             value={users.name}
             onChange={(e) => handleChange(e)}
           />
           <input
+            className="p-2 rounded bg-slate-700 text-white m-2 border"
             type="number"
             name="age"//{`age${index}`}
-            placeholder="Age"
+            placeholder="Enter Age"
             value={users.age}
             onChange={(e) => handleChange( e)}
           />
           <input
+            className="p-2 rounded bg-slate-700 text-white m-2 border"
             type="text"
             name="city"//{`city${index}`}
-            placeholder="City"
+            placeholder="Enter City"
             value={users.city}
             onChange={(e) => handleChange(e)}
           />
         </div>
       {/* ))} */}
-      <button type="button" onClick={fetchUsers}>
+      <button className="p-2 rounded bg-slate-700 text-white m-2" type="button" onClick={fetchUsers}>
         Load Users
       </button>
-      <button type="submit">Submit</button>
+      <button className="p-2 rounded bg-slate-700 text-white m-2" type="submit">Submit</button>
     </form>
-    <div>
-       <table className='border border-collapse border-b-slate-800 p-4'>
+    <div className='overflow-scroll'>
+       <table className='border border-collapse border-b-slate-800 p-4 w-max overflow-scroll'>
         <thead className='border border-collapse border-b-slate-800 px-4'>
             <tr className='border border-collapse border-b-slate-800'>
-            <th className='border border-collapse border-b-slate-800 text-left px-4'>Name</th>
-            <th className='border border-collapse border-b-slate-800 text-left px-4'>Age</th>
-            <th className='border border-collapse border-b-slate-800 text-left px-4'>City</th>
+            <th className='border border-collapse border-b-slate-800 text-left px-4 w-80'>Name</th>
+            <th className='border border-collapse border-b-slate-800 text-left px-4 w-40'>Age</th>
+            <th className='border border-collapse border-b-slate-800 text-left px-4 w-60'>City</th>
             </tr>
         </thead>
-        <tbody className='border border-collapse border-b-slate-800 p-4'>
+        <tbody className='border border-collapse border-b-slate-800 p-4 overflow-scroll'>
       {data.map((item, index) => (
         <tr 
         className='border border-collapse border-b-slate-800 px-4'
         key={index}>
-            <td className='border border-collapse border-b-slate-800 px-4'>{item.name}</td>
-            <td className='border border-collapse border-b-slate-800 px-4'>{item.age}</td>
-            <td className='border border-collapse border-b-slate-800 px-4'>{item.city}</td>
+            <td className='border border-collapse border-b-slate-800 px-4 w-80'>{item.name}</td>
+            <td className='border border-collapse border-b-slate-800 px-4 w-40'>{item.age}</td>
+            <td className='border border-collapse border-b-slate-800 px-4 w-60'>{item.city}</td>
         </tr>
       ))}
       </tbody>
